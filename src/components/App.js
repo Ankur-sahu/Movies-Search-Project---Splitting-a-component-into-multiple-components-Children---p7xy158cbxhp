@@ -6,9 +6,22 @@ const App = () => {
     const [inputValue, setInputValue] = useState("");
     const [results, setResult] = useState(null);
 
-    function handleClick(e) {}
+     function handleClick(e) {
+        e.preventDefault()
 
-    function handleChange(e) {}
+        let arr = movies.filter((element) => {
+            //element.title.toLowerCase().includes(inputValue.toLowerCase())
+            return  element.title.toLowerCase().includes(inputValue.toLowerCase())
+        })
+        setResult(arr)
+        console.log(arr)
+        setInputValue("")
+    }
+
+    function handleChange(e) {
+        setInputValue(e.target.value)
+        
+    }
 
     return (
         <div id="main">
@@ -26,7 +39,7 @@ const App = () => {
             <div id="result">
                 {results &&
                     results.map((movie) => (
-                        <div className="movie">{movie}</div>
+                        <div className="movie">{movie.title}</div>
                     ))}
             </div>
         </div>
